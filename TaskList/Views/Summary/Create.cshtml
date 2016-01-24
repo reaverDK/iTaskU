@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<body>
+	<div>
+		<h1>Opret et nyt referat</h1>
+		<br />
+		<form method="post" action="/Summary/CreateNew">
+			<div class="form-group">
+				<h4><label for="taskTitle">Titel:</label></h4>
+				<div class="col-md-10">
+					<input type="text" spellcheck="true" class="form-control" name="taskTitle" required />
+				</div>
+			</div>
+			<br /><br />
+			<div class="form-group">
+				<h4><label for="taskDescription">Beskrivelse:</label></h4>
+				<div class="col-md-10">
+					<textarea typeof="text" height="150px" spellcheck="true" lang="da" class="form-control-new" name="taskDescription" required></textarea>
+				</div>
+			</div>
+			<br /><br /><br /><br /><br /><br /><br /><br />
+			<div class="form-group">
+				<h4><label for="taskAuthor">Ansvarlig:</label></h4>
+				<div class="col-md-10">
+					<input typeof="text" spellcheck="true" lang="da" class="form-control" name="taskAuthor" required />
+				</div>
+			</div>
+			<br /><br /><br /><br /><br />
+			<div class="form-group">
+				<div class="col-md-10">
+					<input type="submit" class="btn btn-block" width="100" value="Gem referat" />
+				</div>
+			</div>
+			<br /><br />
+		</form>
+	</div>
+</body>
+

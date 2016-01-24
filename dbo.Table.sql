@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Table]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Task] NVARCHAR(MAX) NOT NULL, 
+    [IsCompleted] BIT NOT NULL, 
+    [EntryDate] DATETIME NOT NULL
+)
