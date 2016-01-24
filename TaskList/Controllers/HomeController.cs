@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using TaskList.Models; 
 
+
 namespace TaskList.Controllers
 {
 	[Authorize]
@@ -32,7 +33,14 @@ namespace TaskList.Controllers
 		//Display a form for creating a new task
 		public ActionResult Create()
 		{
+			var member = new ApplicationDbContext();
+			ViewBag.member = member.Users.ToList();
 			return View();
+		}
+
+		public ActionResult Cancel()
+		{
+			return RedirectToAction("Index");
 		}
 
 		[Authorize]

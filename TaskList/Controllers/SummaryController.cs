@@ -53,6 +53,11 @@ namespace TaskList.Controllers
 			return View();
 		}
 
+		public ActionResult Cancel()
+		{
+			return RedirectToAction("Index");
+		}
+
 		[Authorize]
 		//Adding a new summary to the database
 		public ActionResult CreateNew(string taskTitle, string taskDescription, string taskAuthor)
