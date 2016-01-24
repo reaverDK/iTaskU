@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using TaskList.Models; 
+using System.Web.Security;
+using TaskList.Models;
 
 namespace TaskList.Controllers
 {
@@ -16,7 +17,7 @@ namespace TaskList.Controllers
 		// GET: Home
 		//Display a list of tasks
 		public ActionResult Index()
-        {
+		{ 
 			lock (_lock)
 			{
 				var tasks = from t in db.Tasks
@@ -30,7 +31,14 @@ namespace TaskList.Controllers
 		//Display a form for creating a new task
 		public ActionResult Create()
 		{
+			var member = new ApplicationDbContext();
+			ViewBag.member = member.Users.ToList();
 			return View();
+		}
+
+		public ActionResult Cancel()
+		{
+			return RedirectToAction("Index");
 		}
 
 		[Authorize]
