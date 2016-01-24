@@ -1,0 +1,42 @@
+﻿@using TaskList.Models
+@model IEnumerable<Information>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Information</h2>
+@Html.ActionLink("Opret Information", "CreateInformation")
+@foreach (var item in Model)
+{
+    <div>
+        <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+    </div>
+    @item.Created.ToString("D")
+    <p>
+        <div>
+            @Html.DisplayFor(modelItem => item.Content)
+        </div>
+    </p>
+    <hr/>
+}
+
+
+<br/>
+
+<h2>Sygemeldte</h2>
+
+<table class="table">
+    <tr>
+        <th>Date</th>
+        <th>Name</th>
+    </tr>
+
+    @foreach (Illness people in ViewBag.Ill)
+    {
+        <tr>
+            <td>@people.StartDate.ToString("D")</td>
+            <td>@Html.DisplayFor(p => people.Name)</td>
+        </tr>
+    }
+</table>

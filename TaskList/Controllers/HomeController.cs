@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using TaskList.Models; 
 
 namespace TaskList.Controllers
@@ -17,7 +18,8 @@ namespace TaskList.Controllers
 		//Display a list of tasks
 		public ActionResult Index()
         {
-			lock (_lock)
+
+            lock (_lock)
 			{
 				var tasks = from t in db.Tasks
 							orderby t.EntryDate

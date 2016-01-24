@@ -170,6 +170,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SummaryController.cs" />
     <Compile Include="Global.asax.cs">
@@ -177,6 +178,16 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Illness.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Illness.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Information.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Information.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SummaryList.designer.cs">
       <AutoGen>True</AutoGen>
@@ -212,6 +223,16 @@
     <Content Include="Models\SummaryList.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>SummaryList.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Models\Illness.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Illness.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Models\Information.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Information.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -261,6 +282,7 @@
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Summary\Index.cshtml" />
     <Content Include="Views\Summary\Create.cshtml" />
+    <Content Include="Views\Information\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -283,6 +305,17 @@
       <DependentUpon>SummaryList.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\Illness.dbml.layout">
+      <DependentUpon>Illness.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\Information.dbml.layout">
+      <DependentUpon>Information.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
