@@ -6858,9 +6858,9 @@ td.visible-print {
   }
 }
 
-.floatLeft { width: 20%; float: left; }
-.floatMid { width: 40%; float: left; }
-.floatRight {width: 40%; float: right; }
+.floatLeft { width: 20%; float: left; background-color: white; }
+.floatMid { width: 40%; float: left; background-color: white; }
+.floatRight {width: 40%; float: right; background-color: white; }
 .container { overflow: hidden; width: 100%; }
 
 #page-wrap{
@@ -6886,6 +6886,13 @@ td.visible-print {
 }
 .round-button:hover {
     background: #262626;
+}
+.round-button:focus {
+    background: #1aff00;
+}
+
+.round-button:active {
+    background: #1aff00;
 }
 
 .round-button-1 {
