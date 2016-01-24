@@ -50,6 +50,8 @@ namespace TaskList.Controllers
 		//Display a form for creating a new summary
 		public ActionResult Create()
 		{
+			var member = new ApplicationDbContext();
+			ViewBag.member = member.Users.ToList();
 			return View();
 		}
 
