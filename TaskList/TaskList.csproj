@@ -283,6 +283,8 @@
     <Content Include="Views\Summary\Index.cshtml" />
     <Content Include="Views\Summary\Create.cshtml" />
     <Content Include="Views\Information\Index.cshtml" />
+    <Content Include="Views\Information\IsIll.cshtml" />
+    <Content Include="Views\Information\CreateInformation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

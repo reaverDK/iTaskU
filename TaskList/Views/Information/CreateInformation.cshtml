@@ -1,0 +1,50 @@
+﻿@model TaskList.Models.Information
+
+@{
+    ViewBag.Title = "CreateInformation";
+}
+
+<h2>CreateInformation</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Information</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            <label class="control-label col-md-2">Overskrift</label>
+            <div class="col-md-10">
+                <input type="text" spellcheck="true" class="form-control" name="title" required />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Indhold</label>
+            <div class="col-md-10">
+                <textarea type="text" rows="10" spellcheck="true" class="form-control" name="content" required></textarea>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-block"/>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("Annuller", "Index", null, new {@class = "btn btn-block-1"})
+            </div>
+        </div>
+
+    </div>
+}
+
+
