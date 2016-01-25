@@ -171,7 +171,7 @@ namespace TaskList.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EntryDate", DbType="DateTime NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EntryDate", DbType="DateTime2 NOT NULL")]
 		public System.DateTime EntryDate
 		{
 			get
