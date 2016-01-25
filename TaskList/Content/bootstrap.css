@@ -2421,6 +2421,12 @@ input[type="button"].btn-block {
   width: 100%;
 }
 
+input[type="submit"].btn-block-1,
+input[type="reset"].btn-block-1,
+input[type="button"].btn-block-1 {
+  width: 100%;
+}
+
 .fade {
   opacity: 0;
   -webkit-transition: opacity 0.15s linear;
@@ -6894,6 +6900,7 @@ td.visible-print {
     box-shadow: 0 0 3px gray;
     font-size:20px;
     font-weight:bold;
+	margin: 0px;
 }
 .round-button:hover {
     background: #262626;
@@ -6925,19 +6932,52 @@ td.visible-print {
     background: #FF00FF;
 }
 
-.tile_div a {
+.round-button-first {
+    display:block;
+    width:50px;
+    height:50px;
+    line-height:50px;
+    border: 2px solid #f5f5f5;
+    border-radius: 50%;
+    color:#f5f5f5;
+    text-align:center;
+    text-decoration:none;
+    background: #EE82EE;
+    box-shadow: 0 0 3px gray;
+    font-size:20px;
+    font-weight:bold;
+}
+.round-button-first:hover {
+    background: #FF00FF;
+}
+
+.tile_div_first {
     display: block;
     float:  left;
     height: 50px;
     width: 50px;
-    margin-right: 5px;
+    margin-right: 0%;
+	margin-left: 33%;
     background-image: url(./images/button_left.png);
     text-align: center;
     line-height: 50px;
     text-decoration: none;
 }
 
-.title_div a.last {
+.tile_div a {
+    display: block;
+    float:  left;
+    height: 50px;
+    width: 50px;
+    margin-right: 0%;
+	margin-left: 5%;
+    background-image: url(./images/button_left.png);
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+}
+
+.title_div_last {
     margin-right: 0;
 }
 
