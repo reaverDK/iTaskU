@@ -9,20 +9,22 @@
 @Html.ActionLink("Opret Information", "CreateInformation")
 @foreach (var item in Model)
 {
-    <div>
-        <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
-        <!-- Logged in users can deactivate informations -->
-        @if (User.Identity.IsAuthenticated)
-        {
-            <td>@Html.ActionLink("[Fjern]", "DeactivateInformation", new { id = @item.Id })</td>
-        }
-    </div>
-    @item.Created.ToString("D")
-    <p>
+    <div class="div-card">
         <div>
-            @Html.DisplayFor(modelItem => item.Content)
+            <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+            <!-- Logged in users can deactivate informations -->
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td>@Html.ActionLink("[Fjern]", "DeactivateInformation", new { id = @item.Id })</td>
+            }
         </div>
-    </p>
+        @item.Created.ToString("D")
+        <p>
+            <div>
+                @Html.DisplayFor(modelItem => item.Content)
+            </div>
+        </p>
+    </div>
     <hr/>
 }
 

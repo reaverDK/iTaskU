@@ -1,0 +1,19 @@
+﻿.css-test{
+    
+    
+}
+
+.div-card {
+    background: whitesmoke;
+    margin-bottom: 2px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	border-bottom-color: black;
+	border-width: 2px;
+	background-color: whitesmoke;
+	padding: 5px;
+	box-shadow: 1px 1px 5px;
+	margin-bottom: 7px;
+}
+

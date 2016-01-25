@@ -10,11 +10,17 @@
 		<div class="container" id="page-wrap">
 			<div>
 				<h1>Referater</h1>
-				<br /><br />
-
-				@{ foreach (TaskList.Models.Table summary in ViewData.Model)
+				<br />
+			    
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <a class="btn btn-primary" href="/Summary/Create"> <h4>Opret nyt referat</h4></a>
+                    </div>
+                </div>
+                <br /><br /><br />
+			    @{ foreach (TaskList.Models.Table summary in ViewData.Model)
 					{
-						<div>
+						<div  class="div-card">
 							<br />
 							<h4>@summary.EntryDate.ToShortDateString()</h4>
 							<h4>@summary.Title.ToString()</h4>
@@ -24,12 +30,8 @@
 					}
 				}
 			</div>
-			<br /><br />
-			<div class="form-group">
-				<div class="col-md-10">
-					<a class="btn btn-primary" href="/Summary/Create"> <h4>Opret nyt referat</h4></a>
-				</div>
-			</div>
+			
+			
 		</div>
 	</body>@*
 	}
