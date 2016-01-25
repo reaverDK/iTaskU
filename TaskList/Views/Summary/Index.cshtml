@@ -21,7 +21,6 @@
 			    @{ foreach (TaskList.Models.Table summary in ViewData.Model)
 					{
 						<div  class="div-card">
-							<br />
 							<h4>@summary.EntryDate.ToShortDateString()</h4>
 							<h4>@summary.Title.ToString()</h4>
 							<h5>@summary.Description.ToString()</h5>
