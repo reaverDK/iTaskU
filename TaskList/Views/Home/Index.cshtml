@@ -39,7 +39,7 @@
 							if (!task.IsBegun)
 							{
 								<div class="textarea-new">
-								    <form>
+									<form>
 								        <h3>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h3>
 								        
                                         <!-- Setting priority -->
@@ -57,10 +57,10 @@
                                         }
 								        
 								        <wbr/>
-								        <h4><b>@task.Description.ToString()</b></h4>
-								        <h4>@task.Author.ToString()</h4>
+										<h4><b>@task.Description.ToString()</b></h4>
+										<h4>@task.Author.ToString()</h4>
 								        <a href="/Home/Begin/@task.Id.ToString()"> <h4>Start Opgave</h4> <br/></a>
-								    </form>
+									</form>
 								</div>
 							}
 						}
@@ -87,7 +87,7 @@
 									<del>
 										<br />
 										<h5>Fra @task.EntryDate.ToShortDateString() til @task.EndDate.ToShortDateString()</h5>
-										<h5>@task.Task1.ToString()</h5>
+										<h5><b>@task.Task1.ToString()</b></h5>
 										<h5>@task.Description.ToString()</h5>
 										<h5>@task.Author.ToString()</h5>
 									</del>
@@ -122,7 +122,7 @@
                                             <h5>Prioritet: Lav</h5>
                                         }
                                         <wbr />
-                                        <h4>@task.Description.ToString()</h4>
+										<h4>@task.Description.ToString()</h4>
 										<h4>@task.Author.ToString()</h4>
 										<a href="/Home/Complete/@task.Id.ToString()"> <h4>Afslut Opgave</h4> <br /></a>
 									</form>
