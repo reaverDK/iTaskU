@@ -7,37 +7,49 @@
 @*@if (Request.IsAuthenticated && IdentityResult.Success.Succeeded)
 {@**@
 	<body>
+		<br />
+		<div class=container>
+				<div class="tile_div">
+					<div class="floatMid">
+						<a class="round-button">ok</a>
+						<a class="round-button">ok</a>
+						<a class="round-button">ok</a>
+						<a class="round-button">ok</a>
+					</div>
+			</div>
+		</div>
+		<br />
 		<div class="container" id="page-wrap">
 			<div class="floatRight">
-				<h1>Afventende</h1>
-				<br /><br />
-
-				@{ foreach (TaskList.Models.Task task in ViewData.Model)
-					{
-						/*if (task.IsCompleted)
+				<div class="textarea-new">
+					<h1>Afventende</h1>
+					@{ foreach (TaskList.Models.Task task in ViewData.Model)
 						{
-							<div>
-								<del>
-									<br />
-									@task.EntryDate.ToShortDateString()
-									@task.Task1.ToString()
-								</del>
-							</div>
-						}
-						else*/
-						if (!task.IsBegun)
-						{
-							<div>
-								<form>
-									<h3>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h3> <wbr />
-									<h4>@task.Description.ToString()</h4>
-									<h4>@task.Author.ToString()</h4>
-									<a href="/Home/Begin/@task.Id.ToString()"> <h4>Start Opgave</h4> <br /></a>
-								</form>
-							</div>
+							/*if (task.IsCompleted)
+							{
+								<div>
+									<del>
+										<br />
+										@task.EntryDate.ToShortDateString()
+										@task.Task1.ToString()
+									</del>
+								</div>
+							}
+							else*/
+							if (!task.IsBegun)
+							{
+								<div class="textarea-new">
+									<form>
+										<h3>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h3> <wbr />
+										<h4>@task.Description.ToString()</h4>
+										<h4>@task.Author.ToString()</h4>
+										<a href="/Home/Begin/@task.Id.ToString()"> <h4>Start Opgave</h4> <br /></a>
+									</form>
+								</div>
+							}
 						}
 					}
-				}
+				</div>
 
 				<br /><br />
 				<div class="form-group">
@@ -48,45 +60,46 @@
 			</div>
 
 			<div class="floatLeft">
-				<h1>Afsluttede</h1>
-				<br /><br />
+				<div class="textarea-new">
+					<h1>Afsluttede</h1>
 
-				@{ foreach (TaskList.Models.Task task in ViewData.Model)
-					{
-						if (task.IsCompleted)
+					@{ foreach (TaskList.Models.Task task in ViewData.Model)
 						{
-							<div>
-								<del>
-									<br />
-									<h5>@task.EntryDate.ToShortDateString()</h5>
-									<h5>@task.Task1.ToString()</h5>
-									<h5>@task.Author.ToString()</h5>
-								</del>
-							</div>
+							if (task.IsCompleted)
+							{
+								<div class="textarea-new">
+									<del>
+										<br />
+										<h5>@task.EntryDate.ToShortDateString()</h5>
+										<h5>@task.Task1.ToString()</h5>
+										<h5>@task.Author.ToString()</h5>
+									</del>
+								</div>
+							}
 						}
 					}
-				}
-				<br /><br />
+				</div>
 			</div>
 
 			<div class="floatMid">
-				<h1>Igangværende</h1>
-				<br /><br />
-				@{ foreach (TaskList.Models.Task task in ViewData.Model)
-					{
-						if (!task.IsCompleted && task.IsBegun)
+				<div class="textarea-new">
+					<h1>Igangværende</h1>
+					@{ foreach (TaskList.Models.Task task in ViewData.Model)
 						{
-							<div>
-								<form>
-									<h3>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h3> <wbr />
-									<h4>@task.Description.ToString()</h4>
-									<h4>@task.Author.ToString()</h4>
-									<a href="/Home/Complete/@task.Id.ToString()"> <h4>Afslut Opgave</h4> <br /></a>
-								</form>
-							</div>
+							if (!task.IsCompleted && task.IsBegun)
+							{
+								<div class="textarea-new">
+									<form>
+										<h3>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h3> <wbr />
+										<h4>@task.Description.ToString()</h4>
+										<h4>@task.Author.ToString()</h4>
+										<a href="/Home/Complete/@task.Id.ToString()"> <h4>Afslut Opgave</h4> <br /></a>
+									</form>
+								</div>
+							}
 						}
 					}
-				}
+				</div>
 			</div>
 		</div>
 	</body>@*

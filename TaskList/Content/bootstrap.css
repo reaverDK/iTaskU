@@ -6869,9 +6869,9 @@ td.visible-print {
   }
 }
 
-.floatLeft { width: 20%; float: left; background-color: white; }
-.floatMid { width: 40%; float: left; background-color: white; }
-.floatRight {width: 40%; float: right; background-color: white; }
+.floatLeft { width: 20%; float: left; margin-right: 2px; }
+.floatMid { width: 39%; float: left; margin-right:2px; margin-left: 4px; }
+.floatRight {width: 40%; float: right; }
 .container { overflow: hidden; width: 100%; }
 
 #page-wrap{
@@ -6927,9 +6927,9 @@ td.visible-print {
 
 .tile_div a {
     display: block;
-    float: left;
+    float:  left;
     height: 50px;
-    width: 100px;
+    width: 50px;
     margin-right: 5px;
     background-image: url(./images/button_left.png);
     text-align: center;
@@ -6943,4 +6943,16 @@ td.visible-print {
 
 .clear {
     clear: both;
+}
+
+.textarea-new {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	border-bottom-color: black;
+	border-width: 2px;
+	background-color: whitesmoke;
+	padding: 5px;
+	box-shadow: 1px 1px 5px;
+	margin-bottom: 7px;
 }
