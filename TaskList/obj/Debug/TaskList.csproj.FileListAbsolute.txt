@@ -67,8 +67,3 @@ C:\Users\adam\documents\visual studio 2015\Projects\TaskList\TaskList\bin\Micros
 C:\Users\adam\documents\visual studio 2015\Projects\TaskList\TaskList\obj\Debug\TaskList.dll
 C:\Users\adam\documents\visual studio 2015\Projects\TaskList\TaskList\obj\Debug\TaskList.pdb
 C:\Users\adam\Documents\Visual Studio 2015\Projects\TaskList\TaskList\obj\Debug\TaskList.csprojResolveAssemblyReference.cache
-C:\Users\steff\Documents\Visual Studio 2015\Projects\itasku\TaskList\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\steff\Documents\Visual Studio 2015\Projects\itasku\TaskList\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\steff\Documents\Visual Studio 2015\Projects\itasku\TaskList\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\steff\Documents\Visual Studio 2015\Projects\itasku\TaskList\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\steff\Documents\Visual Studio 2015\Projects\itasku\TaskList\bin\roslyn\VBCSCompiler.exe
