@@ -23,7 +23,7 @@ namespace TaskList.Controllers
             lock (_lock)
 			{
 				var tasks = from t in db.Tasks
-							orderby t.EntryDate
+							orderby t.Priority
 							descending
 							select t;
 				return View(tasks.ToList());
