@@ -45,7 +45,7 @@ namespace TaskList.Controllers
 
 		[Authorize]
 		//Adding a new task to the database
-		public ActionResult CreateNew(string taskTitle, string taskDescription, string taskAuthor)
+		public ActionResult CreateNew(string taskTitle, string taskDescription, int taskPrioritet, string taskAuthor)
 		{
 			lock (_lock)
 			{
@@ -57,6 +57,8 @@ namespace TaskList.Controllers
 				newTask.IsCompleted = false;
 				newTask.IsBegun = false;
 				newTask.EntryDate = DateTime.Now;
+			    newTask.Priority = taskPrioritet;
+
 
 				db.Tasks.InsertOnSubmit(newTask);
 				db.SubmitChanges();

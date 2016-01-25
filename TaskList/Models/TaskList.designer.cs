@@ -96,6 +96,8 @@ namespace TaskList.Models
 		
 		private System.DateTime _EndDate;
 		
+		private int _Priority;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -116,6 +118,8 @@ namespace TaskList.Models
     partial void OnAuthorChanged();
     partial void OnEndDateChanging(System.DateTime value);
     partial void OnEndDateChanged();
+    partial void OnPriorityChanging(int value);
+    partial void OnPriorityChanged();
     #endregion
 		
 		public Task()
@@ -279,6 +283,26 @@ namespace TaskList.Models
 					this._EndDate = value;
 					this.SendPropertyChanged("EndDate");
 					this.OnEndDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Priority", DbType="Int NOT NULL")]
+		public int Priority
+		{
+			get
+			{
+				return this._Priority;
+			}
+			set
+			{
+				if ((this._Priority != value))
+				{
+					this.OnPriorityChanging(value);
+					this.SendPropertyChanging();
+					this._Priority = value;
+					this.SendPropertyChanged("Priority");
+					this.OnPriorityChanged();
 				}
 			}
 		}
