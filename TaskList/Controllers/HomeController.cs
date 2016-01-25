@@ -14,7 +14,7 @@ namespace TaskList.Controllers
     {
 		private TaskListDataContext db = new TaskListDataContext();
 		object _lock = new object();
-				
+
 		// GET: Home
 		//Display a list of tasks
 		public ActionResult Index()
@@ -49,7 +49,7 @@ namespace TaskList.Controllers
 		{
 			lock (_lock)
 			{
-				//Add the new task to database
+				//Add the new task to database	
 				Task newTask = new Task();
 				newTask.Task1 = taskTitle;
 				newTask.Description = taskDescription;
@@ -74,8 +74,10 @@ namespace TaskList.Controllers
 				//Database Logic
 				var tasks = from t in db.Tasks where t.Id == id select t;
 				foreach (Task match in tasks)
+				{
 					match.IsCompleted = true;
-
+					match.EndDate = DateTime.Now;
+				}
 				db.SubmitChanges();
 			}
 
