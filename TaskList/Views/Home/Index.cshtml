@@ -42,10 +42,26 @@
 							{
 								<div class="textarea-new">
 									<form>
-										<h3>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h3> <wbr />
+								        <h3>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h3>
+								        
+                                        <!-- Setting priority -->
+                                        @if (@task.Priority == 3)
+                                        {
+                                            <h5>Prioritet: Høj</h5>
+                                        }
+                                        else if (@task.Priority == 2)
+                                        {
+                                            <h5>Prioritet: Middel</h5>
+                                        }
+                                        else
+                                        {
+                                            <h5>Prioritet: Lav</h5>
+                                        }
+								        
+								        <wbr/>
 										<h4><b>@task.Description.ToString()</b></h4>
 										<h4>@task.Author.ToString()</h4>
-										<a href="/Home/Begin/@task.Id.ToString()"> <h4>Start Opgave</h4> <br /></a>
+								        <a href="/Home/Begin/@task.Id.ToString()"> <h4>Start Opgave</h4> <br/></a>
 									</form>
 								</div>
 							}
@@ -93,7 +109,21 @@
 							{
 								<div class="textarea-new">
 									<form>
-										<h3>@task.EntryDate.ToShortDateString() <b>@task.Task1.ToString()</b> </h3> <wbr />
+									    <h3>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h3> 
+                                        <!-- Setting priority -->
+                                        @if (@task.Priority == 3)
+                                        {
+                                            <h5>Prioritet: Høj</h5>
+                                        }
+                                        else if (@task.Priority == 2)
+                                        {
+                                            <h5>Prioritet: Middel</h5>
+                                        }
+                                        else
+                                        {
+                                            <h5>Prioritet: Lav</h5>
+                                        }
+                                        <wbr />
 										<h4>@task.Description.ToString()</h4>
 										<h4>@task.Author.ToString()</h4>
 										<a href="/Home/Complete/@task.Id.ToString()"> <h4>Afslut Opgave</h4> <br /></a>
@@ -105,10 +135,4 @@
 				</div>
 			</div>
 		</div>
-	</body>@*
-	}
-	else
-	{
-		<h1>Venligst log ind <a href="/Account/Login/"> her</a></h1>
-		Html.ActionLink("Login", "Account", "Home");
-	}*@
+	</body>

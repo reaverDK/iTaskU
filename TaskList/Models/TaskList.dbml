@@ -10,6 +10,7 @@
       <Column Name="IsBegun" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="Author" Type="System.String" DbType="NVarChar(300) NOT NULL" CanBeNull="false" />
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="Priority" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

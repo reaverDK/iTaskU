@@ -17,3 +17,11 @@
 	margin-bottom: 7px;
 }
 
+.col-md-10-2 {
+    width: 70%;
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    float: left;
+}
