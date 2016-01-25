@@ -11,6 +11,11 @@
 {
     <div>
         <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+        <!-- Logged in users can deactivate informations -->
+        @if (User.Identity.IsAuthenticated)
+        {
+            <td>@Html.ActionLink("[Fjern]", "DeactivateInformation", new { id = @item.Id })</td>
+        }
     </div>
     @item.Created.ToString("D")
     <p>
@@ -26,6 +31,8 @@
 
 <h2>Sygemeldte</h2>
 
+@Html.ActionLink("Sygemeld", "IsIll")
+
 <table class="table">
     <tr>
         <th>Date</th>
@@ -34,9 +41,15 @@
 
     @foreach (Illness people in ViewBag.Ill)
     {
-        <tr>
+<tr>
             <td>@people.StartDate.ToString("D")</td>
             <td>@Html.DisplayFor(p => people.Name)</td>
+
+            <!-- Logged in users can declare people ready agian -->
+            @if (User.Identity.IsAuthenticated)
+            {
+                <td>@Html.ActionLink("Rask igen","FreshById",new {id = @people.Id })</td>
+            }
         </tr>
     }
 </table>
