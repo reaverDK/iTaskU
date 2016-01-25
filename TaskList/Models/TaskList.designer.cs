@@ -94,6 +94,8 @@ namespace TaskList.Models
 		
 		private string _Author;
 		
+		private System.DateTime _EndDate;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -112,6 +114,8 @@ namespace TaskList.Models
     partial void OnIsBegunChanged();
     partial void OnAuthorChanging(string value);
     partial void OnAuthorChanged();
+    partial void OnEndDateChanging(System.DateTime value);
+    partial void OnEndDateChanged();
     #endregion
 		
 		public Task()
@@ -179,7 +183,7 @@ namespace TaskList.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EntryDate", DbType="DateTime NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EntryDate", DbType="DateTime2 NOT NULL")]
 		public System.DateTime EntryDate
 		{
 			get
@@ -239,7 +243,7 @@ namespace TaskList.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Author", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Author", DbType="NVarChar(300) NOT NULL", CanBeNull=false)]
 		public string Author
 		{
 			get
@@ -255,6 +259,26 @@ namespace TaskList.Models
 					this._Author = value;
 					this.SendPropertyChanged("Author");
 					this.OnAuthorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime2 NOT NULL")]
+		public System.DateTime EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this.OnEndDateChanging(value);
+					this.SendPropertyChanging();
+					this._EndDate = value;
+					this.SendPropertyChanged("EndDate");
+					this.OnEndDateChanged();
 				}
 			}
 		}
