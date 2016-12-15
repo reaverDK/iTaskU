@@ -2,67 +2,51 @@
     ViewBag.Title = "Create";
 }
 
-<body>
-	<div>
+
+
+	<div class="container" id="page-wrap">
+		@Html.AntiForgeryToken()
 		<h1>Opret ny opgave</h1>
-		<br />
+
 		<form method="post" action="/Home/CreateNew">
-			<div class="form-group">
+			<div class="form-group col-md-10">
 				<h4><label for="taskTitle">Titel:</label></h4>
-				<div class="col-md-10">
-					<input type="text" spellcheck="true" class="form-control" name="taskTitle" required />
-				</div>
-			</div>
-			<br /><br />
-		    <div class="form-group">
-		        <h4><label for="taskDescription">Beskrivelse:</label></h4>
-		        <div class="col-md-10">
-		            <textarea typeof="text" height="150px" spellcheck="true" lang="da" class="form-control-new" name="taskDescription" required></textarea>
-		        </div>
-		    </div>
-
-		    <br/><br/><br/><br/><br/><br/><br/><br />
-
-            <div class="form-group">
-                <h4><label>Prioritet:</label></h4>
-                <div class="col-md-10">
-                    <select name="taskPrioritet" class="form-control" typeof="text" required>
-                        <option value="3">Høj</option>
-                        <option value="2" selected="selected">Middel</option>
-                        <option value="1">Lav</option>
-                    </select>
-                </div>
-            </div>
-
-
-		    <br /><br /><br />
-			<div class="form-group">
-				<h4><label for="taskAuthor">Ansvarlig:</label></h4>
-				<div class="col-md-10">
-					<select name="taskAuthor" class="form-control" typeof="text" required>
-						@foreach (var member in ViewBag.member)
-						{
-							<option >@member.UserName</option>
-						}
-					</select>
-				</div>
-			</div>
-			<br /><br /><br />
-			<div class="form-group">
-				<div class="col-md-10">
-					<input type="submit" class="btn btn-block" width="100" value="Opret opgave" />
-				</div>
+				<input type="text" spellcheck="true" class="form-control" name="taskTitle" required />
 			</div>
 			<br />
+			<div class="form-group col-md-10">
+				<h4><label for="taskDescription">Beskrivelse:</label></h4>
+				<textarea typeof="text" height="150px" spellcheck="true" lang="da" class="form-control-new" name="taskDescription" required></textarea>
+			</div>
+
+			<div class="form-group col-md-10">
+				<h4><label>Prioritet:</label></h4>
+				<select name="taskPrioritet" class="form-control" typeof="text" required>
+					<option value="3">Høj</option>
+					<option value="2" selected="selected">Middel</option>
+					<option value="1">Lav</option>
+				</select>
+			</div>
+
+			<div class="form-group col-md-10">
+				<h4><label for="taskAuthor">Ansvarlig:</label></h4>
+				<select name="taskAuthor" class="form-control" typeof="text" required>
+					@foreach (var member in ViewBag.member)
+					{
+						<option>@member.UserName</option>
+					}
+				</select>
+			</div>
+
+			<div class="form-group col-md-10">			
+					<input type="submit" class="btn btn-block" width="100" value="Opret opgave" />
+			</div>
+
 		</form>
 		<form action="/Home/Cancel">
-			<div class="form-group">
-				<div class="col-md-10">
-					<input type="submit" class="btn btn-block-1" width="100" value="Annuller" />
-				</div>
+			<div class="form-group col-md-10">
+				<input type="submit" class="btn btn-block-1" width="100" value="Annuller" />
 			</div>
 		</form>
-		<br /><br /><br />
 	</div>
-</body>
 

@@ -98,6 +98,10 @@ namespace TaskList.Models
 		
 		private int _Priority;
 		
+		private string _finalComment;
+		
+		private bool _IsActive;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -120,6 +124,10 @@ namespace TaskList.Models
     partial void OnEndDateChanged();
     partial void OnPriorityChanging(int value);
     partial void OnPriorityChanged();
+    partial void OnfinalCommentChanging(string value);
+    partial void OnfinalCommentChanged();
+    partial void OnIsActiveChanging(bool value);
+    partial void OnIsActiveChanged();
     #endregion
 		
 		public Task()
@@ -303,6 +311,46 @@ namespace TaskList.Models
 					this._Priority = value;
 					this.SendPropertyChanged("Priority");
 					this.OnPriorityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_finalComment", DbType="NVarChar(MAX)")]
+		public string finalComment
+		{
+			get
+			{
+				return this._finalComment;
+			}
+			set
+			{
+				if ((this._finalComment != value))
+				{
+					this.OnfinalCommentChanging(value);
+					this.SendPropertyChanging();
+					this._finalComment = value;
+					this.SendPropertyChanged("finalComment");
+					this.OnfinalCommentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
+		public bool IsActive
+		{
+			get
+			{
+				return this._IsActive;
+			}
+			set
+			{
+				if ((this._IsActive != value))
+				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
+					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
 				}
 			}
 		}

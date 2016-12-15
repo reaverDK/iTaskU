@@ -17,13 +17,28 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+			@if (User.Identity.Name != "Guest")
+			{
                 @Html.ActionLink("iTaskU", "Index", "Information", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
+			}
+			else
+            {
+				@Html.ActionLink("iTaskU", "Index", new { area = "" }, new { @class = "navbar-brand" })
+			}
+			</div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Information", "Index", "Information")</li>				
-                    <li>@Html.ActionLink("Opgaver", "Index", "Home")</li>				
-					<li>@Html.ActionLink("Referater", "Index", "Summary")</li>	
+				@if (User.Identity.Name != "Guest")
+				{
+					<li>@Html.ActionLink("Information", "Index", "Information")</li>				
+					<li>@Html.ActionLink("Opgaver", "Index", "Home")</li>				
+					<li>@Html.ActionLink("Referater", "Index", "Summary")</li>
+				}
+				else
+				{
+					<li>@Html.ActionLink("Information", "Index", "Information")</li>
+					<li>@Html.ActionLink("Opgaver", "Index", "Home")</li>
+				}
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -34,7 +49,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - iTaskU by <a href="mailto:reaverdk@live.dk"> Adam Czerwinski</a> & <a href="mailto:feber.sm@gmail.com"> Steffen Mogensen</a></p>
+            <p>&copy; @DateTime.Now.Year - iTaskU by <a href="mailto:reaverdk@live.dk"> Adam Czerwinski</a></p>
         </footer>
     </div>
 

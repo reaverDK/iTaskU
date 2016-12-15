@@ -18,6 +18,12 @@ namespace TaskList
 				url: "{controller}/{action}/{id}",
 				defaults: new { controller = "Information", action = "Index", id = UrlParameter.Optional }
 			);
+
+			routes.MapRoute(
+				name: "Root",
+				url: "{controller}/{action}/{id}",
+				defaults: new { controller = "Information", action = "Index", id = UrlParameter.Optional }
+			);
 		}
 	}
 }

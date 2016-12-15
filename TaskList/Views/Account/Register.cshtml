@@ -17,6 +17,12 @@
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         </div>
     </div>
+	<div class="form-group">
+		@Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+		<div class="col-md-10">
+			@Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+		</div>
+	</div>
     <div class="form-group">
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -29,6 +35,25 @@
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
+
+	<div class="form-group">
+		@Html.LabelFor(m => m.isAdmin, new { @class = "col-md-2 control-label" })
+		<div class="col-md-10">
+			@Html.TextBoxFor(m => m.isAdmin, new { @class = "form-control" })
+		</div>
+	</div>
+
+	@*<div class="form-group">
+		<div class="col-md-2 control-label">
+			<h5><label>Administrator:</label></h5>
+			<div class="col-md-offset-2">
+				<select name="isAdmin" class="form-control" typeof="text" required>
+					<option value="true" selected="selected">Ja</option>
+					<option value="false">Nej</option>
+				</select>
+			</div>
+		</div>
+	</div>*@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Opret" />

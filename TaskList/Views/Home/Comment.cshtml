@@ -1,0 +1,43 @@
+﻿@model List<TaskList.Models.Task>
+@{
+    ViewBag.Title = "Comment";
+}
+
+<div class="container" id="page-wrap">
+	<h2>Tilføj Kommentar</h2>
+
+	@*<form method="post" action="/Home/AddComment">
+		<div class="form-group col-md-10">
+			<h4><label for="addComment">Kommentar:</label></h4>
+			<input type="text" spellcheck="true" class="form-control" name="Comment" id="comment" required />
+		</div>
+		<div class="form-group col-md-10">
+
+			@Html.ActionLink("Tilføj Kommentar", "AddComment", new { @class = "btn btn-block" })*@
+
+	@using (Html.BeginForm("AddComment", "Home"))
+	{
+		<form>
+			<div class="col-md-10-2">
+				<input type="text" spellcheck="true" class="form-control" name="comment" required />
+				<input type="hidden" name="id" value="@ViewBag.Id" />
+				<br /><br />
+			</div>
+
+			<div class="col-md-10-2">
+				<input type="submit" class="btn btn-block" width="100" value="Tilføj Kommentar" />
+				<br />
+			</div>
+		</form>
+	}
+	<form action="/Home/Cancel">
+		<div class="col-md-10-2">
+			<input type="submit" class="btn btn-block-1" value="Annuller" />
+		</div>
+	</form>
+</div>
+
+
+
+
+

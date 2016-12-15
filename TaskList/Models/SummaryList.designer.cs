@@ -90,6 +90,8 @@ namespace TaskList.Models
 		
 		private string _Author;
 		
+		private bool _IsActive;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -104,6 +106,8 @@ namespace TaskList.Models
     partial void OnEntryDateChanged();
     partial void OnAuthorChanging(string value);
     partial void OnAuthorChanged();
+    partial void OnIsActiveChanging(bool value);
+    partial void OnIsActiveChanged();
     #endregion
 		
 		public Table()
@@ -207,6 +211,26 @@ namespace TaskList.Models
 					this._Author = value;
 					this.SendPropertyChanged("Author");
 					this.OnAuthorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsActive", DbType="Bit NOT NULL")]
+		public bool IsActive
+		{
+			get
+			{
+				return this._IsActive;
+			}
+			set
+			{
+				if ((this._IsActive != value))
+				{
+					this.OnIsActiveChanging(value);
+					this.SendPropertyChanging();
+					this._IsActive = value;
+					this.SendPropertyChanged("IsActive");
+					this.OnIsActiveChanged();
 				}
 			}
 		}

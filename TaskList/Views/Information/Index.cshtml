@@ -6,14 +6,17 @@
 }
 
 <h2>Information</h2>
-@Html.ActionLink("Opret Information", "CreateInformation")
+@if (User.Identity.IsAuthenticated && User.Identity.Name != "Guest")
+{
+	@Html.ActionLink("Opret Information", "CreateInformation")
+}
 @foreach (var item in Model)
 {
     <div class="div-card">
         <div>
             <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
             <!-- Logged in users can deactivate informations -->
-            @if (User.Identity.IsAuthenticated)
+            @if (User.Identity.IsAuthenticated && User.Identity.Name != "Guest")
             {
                 <td>@Html.ActionLink("[Fjern]", "DeactivateInformation", new { id = @item.Id })</td>
             }
@@ -32,8 +35,10 @@
 <br/>
 
 <h2>Sygemeldte</h2>
-
-@Html.ActionLink("Sygemeld", "IsIll")
+@if (User.Identity.IsAuthenticated && User.Identity.Name != "Guest")
+{
+	@Html.ActionLink("Sygemeld", "IsIll")
+}
 
 <table class="table">
     <tr>
@@ -48,7 +53,7 @@
             <td>@Html.DisplayFor(p => people.Name)</td>
 
             <!-- Logged in users can declare people ready agian -->
-            @if (User.Identity.IsAuthenticated)
+            @if (User.Identity.IsAuthenticated && User.Identity.Name != "Guest")
             {
                 <td>@Html.ActionLink("Rask igen","FreshById",new {id = @people.Id })</td>
             }

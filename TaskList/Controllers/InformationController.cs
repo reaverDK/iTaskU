@@ -7,6 +7,7 @@ using TaskList.Models;
 
 namespace TaskList.Controllers
 {
+	[Authorize]
     public class InformationController : Controller
     {
         private InformationDataContext Infodb = new InformationDataContext();
@@ -74,7 +75,8 @@ namespace TaskList.Controllers
             return View();
         }
 
-        public ActionResult FreshById(int id)
+		[Authorize]
+		public ActionResult FreshById(int id)
         {
             lock (_lock)
             {
@@ -89,7 +91,8 @@ namespace TaskList.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpPost]
+		[Authorize]
+		[HttpPost]
         public ActionResult IsIll(string name)
         {
             Illness ill = new Illness();
@@ -102,7 +105,8 @@ namespace TaskList.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
+		[Authorize]
+		[HttpGet]
         public ActionResult IsIll()
         {
             return View();

@@ -27,24 +27,24 @@ namespace TaskList.Controllers
 			}
 		}
 
-		[Authorize]
-		public ActionResult NewSummary(string taskTitle, string taskDescription, string taskAuthor)
-		{
-			lock (_lock)
-			{
-				//Add the new summary to database
-				Table newTable = new Table();
-				newTable.Title = taskTitle;
-				newTable.Description = taskDescription;
-				newTable.EntryDate = DateTime.Now;
-				newTable.Author = taskAuthor;
+		//[Authorize]
+		//public ActionResult NewSummary(string taskTitle, string taskDescription, string taskAuthor)
+		//{
+		//	lock (_lock)
+		//	{
+		//		//Add the new summary to database
+		//		Table newTable = new Table();
+		//		newTable.Title = taskTitle;
+		//		newTable.Description = taskDescription;
+		//		newTable.EntryDate = DateTime.Now;
+		//		newTable.Author = taskAuthor;
 
-				db.Tables.InsertOnSubmit(newTable);
-				db.SubmitChanges();
-			}
+		//		db.Tables.InsertOnSubmit(newTable);
+		//		db.SubmitChanges();
+		//	}
 
-			return RedirectToAction("Index");
-		}
+		//	return RedirectToAction("Index");
+		//}
 
 		[Authorize]
 		//Display a form for creating a new summary
@@ -72,11 +72,24 @@ namespace TaskList.Controllers
 				newTable.Description = taskDescription;
 				newTable.Author = taskAuthor;
 				newTable.EntryDate = DateTime.Now;
+				newTable.IsActive = true;
 
 				db.Tables.InsertOnSubmit(newTable);
 				db.SubmitChanges();
 			}
 
+			return RedirectToAction("Index");
+		}
+
+		public ActionResult Delete(int id)
+		{
+			lock (_lock)
+			{
+				Table table = db.Tables.FirstOrDefault(i => i.Id == id);
+				table.IsActive = false;
+
+				db.SubmitChanges();
+			}
 			return RedirectToAction("Index");
 		}
 	}

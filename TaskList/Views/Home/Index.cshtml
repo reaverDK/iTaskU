@@ -1,138 +1,435 @@
-﻿@model List<TaskList.Models.Task>
+﻿@model List<TaskList.Models.Task> 
+@using Microsoft.AspNet.Identity;
+@using Microsoft.AspNet.Identity.Owin;
+@using Microsoft.Owin.Security;
 
 @{
 	ViewBag.Title = "iTaskU";
 }
 
-@*@if (Request.IsAuthenticated && IdentityResult.Success.Succeeded)
-{@**@
-	<body>
 		<br />
-		<div class=container>
-				<div class="tile_div a">
-					<a class="round-button">ok</a>
-				</div>
-				<div class="tile_div a">
-					<a class="round-button">ok</a>
-					<a class="round-button">ok</a>
-				</div>
-				<div class="tile_div last">
-					<a class="round-button">ok</a>
-				</div>
-			</div>
-		<br />
-		<div class="container" id="page-wrap">
-			<div class="floatRight">
-				<div class="textarea-new">
-					<h1>Afventende</h1>
-					@{ foreach (TaskList.Models.Task task in ViewData.Model)
+<div class="col-md-3" data-toggle="collapse">
+	<div class="textarea-tb">
+		<p class="text-center"><b>TB</b></p>
+	</div>
+</div>
+<div class="col-md-3">
+	<div class="textarea-tc">
+		<p class="text-center"><b>TC</b></p>
+	</div>
+</div>
+<div class="col-md-3">
+	<div class="textarea-mark">
+		<p class="text-center"><b>Mark</b></p>
+	</div>
+</div>
+<div class="col-md-3">
+	<div class="textarea-pme">
+		<p class="text-center"><b>PME</b></p>
+	</div>
+</div>
+
+			@*<div class="tile_div a">
+					@foreach (var member in ViewBag.member)
 						{
-							/*if (task.IsCompleted)
+
+							string aMember = member.UserName;
+
+
+
+						<div class="floatLeft">
+				<td>@Html.ActionLink(
+				   aMember,
+				   "Show",
+					new {
+					   @id = aMember.ToString(),
+				   },
+				   htmlAttributes: null
+				   )</td>
+				<input type="button" name="showAuthor" href="/Home/Show" value="@member.UserName" />
+			</div>
+					}
+				</div class="tile_div a">*@
+
+			@*<a class="round-button" href="/Home/Show">TOM</a>
+			</div>
+			<div class="tile_div a">
+				<a class="round-button" href="/Home/Show">THOR</a>
+				<a class="round-button" href="/Home/Show">JOHNNY</a>
+			</div>
+			<div class="tile_div last">
+				<a class="round-button" href="/Home/Show">LOGAN</a>
+			</div>*@
+
+@if (Request.IsAuthenticated && IdentityResult.Success.Succeeded && User.Identity.IsAuthenticated)
+{
+			<br />
+			<div class="container page-wrap">
+
+				<div class="floatMid">
+					<div class="textarea-new">
+						<h2>Igangværende</h2>
+						@{ foreach (TaskList.Models.Task task in ViewData.Model)
 							{
-								<div>
-									<del>
-										<br />
-										@task.EntryDate.ToShortDateString()
-										@task.Task1.ToString()
-									</del>
-								</div>
-							}
-							else*/
-							if (!task.IsBegun)
-							{
-								<div class="textarea-new">
-									<form>
-								        <h3>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h3>
-								        
-                                        <!-- Setting priority -->
-                                        @if (@task.Priority == 3)
-                                        {
-                                            <h5>Prioritet: Høj</h5>
-                                        }
-                                        else if (@task.Priority == 2)
-                                        {
-                                            <h5>Prioritet: Middel</h5>
-                                        }
-                                        else
-                                        {
-                                            <h5>Prioritet: Lav</h5>
-                                        }
-								        
-								        <wbr/>
-										<h4><b>@task.Description.ToString()</b></h4>
-										<h4>@task.Author.ToString()</h4>
-								        <a href="/Home/Begin/@task.Id.ToString()"> <h4>Start Opgave</h4> <br/></a>
-									</form>
-								</div>
+								if (!task.IsCompleted && task.IsBegun)
+								{
+									if (task.Author == "TC")
+									{
+										<div class="textarea-label textarea-tc">
+											<form>
+												<h4>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h4>
+												<!-- Setting priority -->
+												@if (@task.Priority == 3)
+												{
+													<h5>Prioritet: Høj</h5>
+												}
+												else if (@task.Priority == 2)
+												{
+													<h5>Prioritet: Middel</h5>
+												}
+												else
+												{
+													<h5>Prioritet: Lav</h5>
+												}
+												<wbr />
+												<h5>@task.Description.ToString()</h5>
+												<h5><i>@task.Author.ToString()</i></h5>
+												@if (User.Identity.Name != "Guest") {
+													<a href="/Home/Complete/@task.Id.ToString()"> <h4>Afslut Opgave</h4> <br /></a>
+												}
+											</form>
+										</div>
+									}
+									else if (task.Author == "TB")
+									{
+										<div class="textarea-label textarea-tb">
+											<form>
+												<h4>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h4>
+												<!-- Setting priority -->
+												@if (@task.Priority == 3)
+												{
+													<h5>Prioritet: Høj</h5>
+												}
+												else if (@task.Priority == 2)
+												{
+													<h5>Prioritet: Middel</h5>
+												}
+												else
+												{
+													<h5>Prioritet: Lav</h5>
+												}
+												<wbr />
+												<h5>@task.Description.ToString()</h5>
+												<h5><i>@task.Author.ToString()</i></h5>
+												@if (User.Identity.Name != "Guest")
+												{
+													<a href="/Home/Complete/@task.Id.ToString()"> <h4>Afslut Opgave</h4> <br /></a>
+												}
+											</form>
+										</div>
+									}
+									else if (task.Author == "Mark")
+									{
+										<div class="textarea-label textarea-mark">
+											<form>
+												<h4>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h4>
+												<!-- Setting priority -->
+												@if (@task.Priority == 3)
+												{
+													<h5>Prioritet: Høj</h5>
+												}
+												else if (@task.Priority == 2)
+												{
+													<h5>Prioritet: Middel</h5>
+												}
+												else
+												{
+													<h5>Prioritet: Lav</h5>
+												}
+												<wbr />
+												<h5>@task.Description.ToString()</h5>
+												<h5><i>@task.Author.ToString()</i></h5>
+												@if (User.Identity.Name != "Guest")
+												{
+													<a href="/Home/Complete/@task.Id.ToString()"> <h4>Afslut Opgave</h4> <br /></a>
+												}
+											</form>
+										</div>
+									}
+									else if (task.Author == "PME")
+									{
+										<div class="textarea-label textarea-pme">
+											<form>
+												<h4>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h4>
+												<!-- Setting priority -->
+												@if (@task.Priority == 3)
+												{
+													<h5>Prioritet: Høj</h5>
+												}
+												else if (@task.Priority == 2)
+												{
+													<h5>Prioritet: Middel</h5>
+												}
+												else
+												{
+													<h5>Prioritet: Lav</h5>
+												}
+												<wbr />
+												<h5>@task.Description.ToString()</h5>
+												<h5><i>@task.Author.ToString()</i></h5>
+												@if (User.Identity.Name != "Guest")
+												{
+													<a href="/Home/Complete/@task.Id.ToString()"> <h4>Afslut Opgave</h4> <br /></a>
+												}
+											</form>
+										</div>
+									}
+									else
+									{
+										<div class="textarea-label textarea-new">
+											<form>
+												<h4>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h4>
+												<!-- Setting priority -->
+												@if (@task.Priority == 3)
+												{
+													<h5>Prioritet: Høj</h5>
+												}
+												else if (@task.Priority == 2)
+												{
+													<h5>Prioritet: Middel</h5>
+												}
+												else
+												{
+													<h5>Prioritet: Lav</h5>
+												}
+												<wbr />
+												<h5>@task.Description.ToString()</h5>
+												<h5><i>@task.Author.ToString()</i></h5>
+												@if (User.Identity.Name != "Guest")
+												{
+													<a href="/Home/Complete/@task.Id.ToString()"> <h4>Afslut Opgave</h4> <br /></a>
+												}
+											</form>
+										</div>
+									}
+								}
 							}
 						}
-					}
+					</div>
 				</div>
 
-				<br /><br />
-				<div class="form-group">
-					<div class="col-md-10">
-						<a class="btn btn-primary" href="/Home/Create"> <h4>Opret ny opgave</h4></a>
+				<div class="floatMid">
+					<div class="textarea-new">
+						<h2>Afventende</h2>
+						@{ foreach (TaskList.Models.Task task in ViewData.Model)
+							{
+								if (!task.IsBegun)
+								{
+									if (task.Author == "TC")
+									{
+									<div class="textarea-tc">
+										<form>
+											<h4>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h4>
+
+											<!-- Setting priority -->
+											@if (@task.Priority == 3)
+											{
+												<h5>Prioritet: Høj</h5>
+											}
+											else if (@task.Priority == 2)
+											{
+												<h5>Prioritet: Middel</h5>
+											}
+											else
+											{
+												<h5>Prioritet: Lav</h5>
+											}
+
+											<wbr />
+											<h5><b>@task.Description.ToString()</b></h5>
+											<h5><i>@task.Author.ToString()</i></h5>
+											@if (User.Identity.Name != "Guest")
+											{
+												<a href="/Home/Begin/@task.Id.ToString()"> <h4>Start Opgave</h4> <br /></a>
+											}
+										</form>
+									</div>
+									}
+									else if (task.Author == "TB")
+									{
+										<div class="textarea-tb">
+											<form>
+												<h4>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h4>
+
+												<!-- Setting priority -->
+												@if (@task.Priority == 3)
+												{
+													<h5>Prioritet: Høj</h5>
+												}
+												else if (@task.Priority == 2)
+												{
+													<h5>Prioritet: Middel</h5>
+												}
+												else
+												{
+													<h5>Prioritet: Lav</h5>
+												}
+
+												<wbr />
+												<h5><b>@task.Description.ToString()</b></h5>
+												<h5><i>@task.Author.ToString()</i></h5>
+												@if (User.Identity.Name != "Guest")
+												{
+													<a href="/Home/Begin/@task.Id.ToString()"> <h4>Start Opgave</h4> <br /></a>
+												}
+											</form>
+										</div>
+									}
+									else if (task.Author == "Mark")
+									{
+										<div class="textarea-mark">
+											<form>
+												<h4>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h4>
+
+												<!-- Setting priority -->
+												@if (@task.Priority == 3)
+												{
+													<h5>Prioritet: Høj</h5>
+												}
+												else if (@task.Priority == 2)
+												{
+													<h5>Prioritet: Middel</h5>
+												}
+												else
+												{
+													<h5>Prioritet: Lav</h5>
+												}
+
+												<wbr />
+												<h5><b>@task.Description.ToString()</b></h5>
+												<h5><i>@task.Author.ToString()</i></h5>
+												@if (User.Identity.Name != "Guest")
+												{
+													<a href="/Home/Begin/@task.Id.ToString()"> <h4>Start Opgave</h4> <br /></a>
+												}
+											</form>
+										</div>
+									}
+									else if (task.Author == "PME")
+									{
+										<div class="textarea-pme">
+											<form>
+												<h4>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h4>
+
+												<!-- Setting priority -->
+												@if (@task.Priority == 3)
+												{
+													<h5>Prioritet: Høj</h5>
+												}
+												else if (@task.Priority == 2)
+												{
+													<h5>Prioritet: Middel</h5>
+												}
+												else
+												{
+													<h5>Prioritet: Lav</h5>
+												}
+
+												<wbr />
+												<h5><b>@task.Description.ToString()</b></h5>
+												<h5><i>@task.Author.ToString()</i></h5>
+												@if (User.Identity.Name != "Guest")
+												{
+													<a href="/Home/Begin/@task.Id.ToString()"> <h4>Start Opgave</h4> <br /></a>
+												}
+											</form>
+										</div>
+									}
+									else
+									{
+										<div class="textarea-label">
+											<form>
+												<h4>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h4>
+
+												<!-- Setting priority -->
+												@if (@task.Priority == 3)
+												{
+													<h5>Prioritet: Høj</h5>
+												}
+												else if (@task.Priority == 2)
+												{
+													<h5>Prioritet: Middel</h5>
+												}
+												else
+												{
+													<h5>Prioritet: Lav</h5>
+												}
+
+												<wbr />
+												<h5><b>@task.Description.ToString()</b></h5>
+												<h5><i>@task.Author.ToString()</i></h5>
+												@if (User.Identity.Name != "Guest")
+												{
+													<a href="/Home/Begin/@task.Id.ToString()"> <h4>Start Opgave</h4> <br /></a>
+												}
+											</form>
+										</div>
+									}
+								}
+							}
+						}
+
+					</div>
+					<div class="form-group col-md-10">
+					@if (User.Identity.Name != "Guest")
+					{
+						<a class="btn btn-block" href="/Home/Create"> <h4>Opret ny opgave</h4></a>
+					}
+					</div>
+				</div>
+
+				<div class="floatRight">
+					<div class="textarea-new">
+						<h2>Afsluttede</h2>
+
+						@{ foreach (TaskList.Models.Task task in ViewData.Model)
+							{
+								if (task.IsCompleted && task.IsActive)
+								{
+									<div class="textarea-label">
+										<!-- Logged in users can deactivate informations -->
+
+										<td>@Html.ActionLink("[Fjern]", "Delete", new { id = @task.Id })</td>
+
+										<del>
+											<br />
+											<h5>Fra @task.EntryDate.ToShortDateString() til @task.EndDate.ToShortDateString()</h5>
+											<h5><b>@task.Task1.ToString()</b></h5>
+											<h5>@task.Description.ToString()</h5>
+											<h5><i>@task.Author.ToString()</i></h5>
+										</del>
+										<td>
+										@if (User.Identity.Name != "Guest")
+										{
+											@Html.ActionLink("[Genstart]", "Restart", new { id = @task.Id })
+											@Html.ActionLink("[Kommentar]", "Comment", new { id = @task.Id })
+										}
+										</td>
+
+										@*<a href="/Home/Comment/@task.Id"> <h4>Tilføj Kommentar</h4> <br /></a>
+										<h5><label for="addComment">Kommentar: </label></h5>*@
+
+										<div class="h5-2">
+											@if (task.finalComment != null)
+											{
+												<h5-2><i><b>@task.finalComment.ToString()</b></i></h5-2>
+											}
+										</div>
+									</div>
+								}
+							}
+						}
 					</div>
 				</div>
 			</div>
-
-			<div class="floatLeft">
-				<div class="textarea-new">
-					<h1>Afsluttede</h1>
-
-					@{ foreach (TaskList.Models.Task task in ViewData.Model)
-						{
-							if (task.IsCompleted)
-							{
-								<div class="textarea-new">
-									<del>
-										<br />
-										<h5>Fra @task.EntryDate.ToShortDateString() til @task.EndDate.ToShortDateString()</h5>
-										<h5><b>@task.Task1.ToString()</b></h5>
-										<h5>@task.Description.ToString()</h5>
-										<h5>@task.Author.ToString()</h5>
-									</del>
-								</div>
-							}
-						}
-					}
-				</div>
-			</div>
-
-			<div class="floatMid">
-				<div class="textarea-new">
-					<h1>Igangværende</h1>
-					@{ foreach (TaskList.Models.Task task in ViewData.Model)
-						{
-							if (!task.IsCompleted && task.IsBegun)
-							{
-								<div class="textarea-new">
-									<form>
-									    <h3>@task.EntryDate.ToShortDateString() @task.Task1.ToString() </h3> 
-                                        <!-- Setting priority -->
-                                        @if (@task.Priority == 3)
-                                        {
-                                            <h5>Prioritet: Høj</h5>
-                                        }
-                                        else if (@task.Priority == 2)
-                                        {
-                                            <h5>Prioritet: Middel</h5>
-                                        }
-                                        else
-                                        {
-                                            <h5>Prioritet: Lav</h5>
-                                        }
-                                        <wbr />
-										<h4>@task.Description.ToString()</h4>
-										<h4>@task.Author.ToString()</h4>
-										<a href="/Home/Complete/@task.Id.ToString()"> <h4>Afslut Opgave</h4> <br /></a>
-									</form>
-								</div>
-							}
-						}
-					}
-				</div>
-			</div>
-		</div>
-	</body>
+}
